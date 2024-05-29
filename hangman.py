@@ -211,5 +211,4 @@ def main():
         response = input("\nWould you like to play again? (yes/no)\n> ").lower()
         play_again = response in ("yes", "y")
 
-if __name__ == "__main__":
-    main()
+main()
