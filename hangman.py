@@ -67,7 +67,7 @@ def main():
         "sweatpants", "mattress", "friends", "clocks", "biology",
         "algebra", "suitcase", "knives", "ninjas", "shampoo"
     ]
-
+# The words have been hard coded for the easiness of both the host and the player
     hangman_stages = [
         """
         -----
@@ -203,7 +203,7 @@ def main():
         """
     ]
 
-    total_attempts = 15  # Set the desired number of attempts here
+    total_attempts = 15  # Set the desired number of attempts here, in this case it is 15
 
     play_again = True
     while play_again:
