@@ -13,7 +13,10 @@ def get_random_word(words_list):
     return random.choice(words_list).lower()
 
 def display_hangman(attempts_left, hangman_stages):
-    print(hangman_stages[-attempts_left-1])
+    if attempts_left < len(hangman_stages):
+        print(hangman_stages[-attempts_left-1])
+    else:
+        print(hangman_stages[0])
 
 def get_player_guess(guessed_letters):
     while True:
@@ -32,11 +35,11 @@ def update_word_guessed(chosen_word, player_guess, word_guessed):
         if letter == player_guess:
             word_guessed[index] = player_guess
 
-def play_game(words, hangman_stages):
+def play_game(words, hangman_stages, total_attempts):
     chosen_word = get_random_word(words)
     guessed_letters = []
     word_guessed = ["-" for _ in chosen_word]
-    attempts_left = len(hangman_stages) - 1
+    attempts_left = total_attempts
 
     while attempts_left > 0 and "-" in word_guessed:
         print(f"\nYou have {attempts_left} attempts remaining")
@@ -200,9 +203,11 @@ def main():
         """
     ]
 
+    total_attempts = 15  # Set the desired number of attempts here
+
     play_again = True
     while play_again:
-        play_game(words, hangman_stages)
+        play_game(words, hangman_stages, total_attempts)
         response = input("\nWould you like to play again? (yes/no)\n> ").lower()
         play_again = response in ("yes", "y")
 
